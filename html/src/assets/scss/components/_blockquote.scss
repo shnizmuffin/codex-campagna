@@ -1,0 +1,8 @@
+blockquote {
+  background-color: $color-blue-gygax;
+  border: 1px solid darken($color-blue-gygax, 5%);
+  border-radius: 4px;
+  padding: 1em;
+  margin: 1em;
+  color: darken($color-blue-gygax, 70%);
+}

@@ -1,0 +1,66 @@
+// md20 NPC Styles
+
+.admonition-title {
+}
+
+.stats {
+  ul {
+    margin: 0;
+    list-style-position: inside;
+    list-style-type: none;
+    li {
+      padding-left: 15px;
+      text-indent: -10px;
+      border-left: 2px solid #ccc;
+    }
+  }
+  p {
+    margin: 0.5em 1.5em;
+    strong:first-child {
+      text-indent: -0.5em;
+      display: inline-block;
+    }
+  }
+}
+
+.block {
+  display: block;
+  margin: auto auto 1em;
+  background: $color-gray-05;
+  border-bottom: 2px solid $color-gray-10;
+  border-radius: 2px;
+  h4 {
+    margin: 1em 0 0;
+    padding: 0 1em;
+    line-height: 2.1;
+    color: $color-white;
+    background: $color-blue-curious;
+    border-bottom: 2px solid darken($color-blue-curious, 10%);
+    border-radius: 2px;
+    display: block;
+    cursor: pointer;
+  }
+  h5 {
+    background: $color-gray-10;
+    border-bottom: 2px $color-gray-20 solid;
+    border-radius: 2px;
+    padding: 0 1em;
+    display: block;
+    cursor: pointer;
+  }
+  br {
+    display: none;
+  }
+  .friendly {
+    background: $color-green-friendly;
+    border-bottom: 2px solid darken($color-green-friendly, 10%);
+  }
+  .hostile {
+    background: $color-red-hostile;
+    border-bottom: 2px solid darken($color-red-hostile, 10%);
+  }
+}
+
+.cr {
+  float: right;
+}
