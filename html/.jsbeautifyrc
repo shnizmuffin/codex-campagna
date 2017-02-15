@@ -11,11 +11,11 @@
     "brace_style": "collapse", // [collapse|expand|end-expand|none]
     "end_with_newline": false, // End output with newline
     "indent_char": " ", // Indentation character
-    "indent_handlebars": false, // e.g. {{#foo}}, {{/foo}}
+    "indent_handlebars": true, // e.g. {{#foo}}, {{/foo}}
     "indent_inner_html": false, // Indent <head> and <body> sections
     "indent_scripts": "keep", // [keep|separate|normal]
     "indent_size": 2, // Indentation size
-    "max_preserve_newlines": 10, // Maximum number of line-breaks to be preserved in one chunk
+    "max_preserve_newlines": 1, // Maximum number of line-breaks to be preserved in one chunk
     "preserve_newlines": true, // Preserve existing line-breaks
     "unformatted": ["a", "span", "img", "code", "pre", "sub", "sup", "em", "strong", "b", "i", "u", "strike", "big", "small", "pre", "h1", "h2", "h3", "h4", "h5", "h6"], // List of tags that should not be reformatted
     "wrap_line_length": 0 // Maximum characters per line (0 disables)

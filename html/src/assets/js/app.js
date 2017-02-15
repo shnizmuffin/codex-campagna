@@ -3,7 +3,7 @@ $(document).ready(function() {
 
   $('.table-of-contents').toc({
     content: '.content',
-    headings: 'h2,h3,h4'
+    headings: 'h2,h3'
   });
 
   $('.content h1, .content h2, .content h3, .content h4, .content h5, .content h6').each( function () {
