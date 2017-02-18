@@ -5,4 +5,13 @@ blockquote {
   padding: 1em;
   margin: 1em;
   color: darken($color-blue-gygax, 70%);
+  
+  p {
+  	color: darken($color-blue-gygax, 70%);
+  	
+  }
+
+  *:last-child {
+  	margin-bottom: 0;
+  }
 }

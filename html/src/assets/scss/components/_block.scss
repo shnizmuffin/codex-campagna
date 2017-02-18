@@ -1,25 +1,45 @@
 // md20 NPC Styles
-
-.admonition-title {
-}
-
 .stats {
-  ul {
-    margin: 0;
-    list-style-position: inside;
-    list-style-type: none;
-    li {
-      padding-left: 15px;
-      text-indent: -10px;
-      border-left: 2px solid #ccc;
+  // ul {
+  //   margin: 0;
+  //   list-style-position: inside;
+  //   list-style-type: none;
+  //   li {
+  //     padding-left: 15px;
+  //     text-indent: -10px;
+  //     border-left: 2px solid #ccc;
+  //   }
+  // }
+  section {
+    &>* {
+      padding: 0 1.5em;
+      &:first-child {
+        padding-top: 0.5em;
+      }
+      &:last-child {
+        padding-bottom: 0.5em;
+      }
     }
   }
-  p {
-    margin: 0.5em 1.5em;
-    strong:first-child {
-      text-indent: -0.5em;
-      display: inline-block;
-    }
+}
+
+// NOT A NUMBER
+// I put results that may return NaN into an element's class
+// to hack around Handlebars _sometimes_ resolving NaN as true, because it's stupid.
+// This affects creatures without values for abilities (undead's CON score)
+// and a bunch of spells/spell-like abilities that don't have DCs.
+.NaN {
+  .spell-like-abilities & {
+    display: none;
+  }
+  .ability-score & {
+    display: none;
+  }
+}
+
+.ability-score-NaN {
+  &::after {
+    content: "—"
   }
 }
 
@@ -38,7 +58,7 @@
     border-bottom: 2px solid darken($color-blue-curious, 10%);
     border-radius: 2px;
     display: block;
-    cursor: pointer;
+    text-transform: capitalize;
   }
   h5 {
     background: $color-gray-10;
@@ -61,6 +81,58 @@
   }
 }
 
+.search {
+  color: $color-white;
+  float: right;
+  &:hover, &:active, &:focus {
+    color: $color-gray-20;
+  }
+}
+
 .cr {
   float: right;
+}
+
+.alignment {
+  text-transform: uppercase;
+}
+
+.size, .type {
+  text-transform: capitalize;
+}
+
+.senses, .attacks, .feats-list, .skills-list, .languages-list, .defensive-abilities-list, .ability-scores-list, .special-attacks-list {
+  display: inline;
+  margin: 0;
+  .sense {
+    display: inline;
+    &:last-child {
+      display: none;
+    }
+    &:nth-child(n):nth-last-child(n+3):after {
+      content: ","
+    }
+  }
+  .defensive-ability, .special-attack, .feat, .skill, .language {
+    display: inline;
+    &:nth-child(n):nth-last-child(n+2):after {
+      content: ","
+    }
+  }
+  .attack, .ability-score {
+    display: inline
+  }
+
+  .feat, .skill, .language {
+    display: inline-block;
+    text-transform: capitalize;
+  }
+}
+
+.special-abilities {
+  .special-ability {
+    .name {
+      text-transform: capitalize;
+    }
+  }
 }
