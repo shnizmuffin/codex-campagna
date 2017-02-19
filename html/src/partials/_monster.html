@@ -1,7 +1,7 @@
 <div class="column">
   <div class="block">
     <div class="stats">
-      <h4 class="hostile">{{name}} <a href="http://www.d20pfsrd.com/?s={{name}}" target="_blank" class="search"><i class="fa fa-search" aria-hidden="true"></i></a></h4>
+      <h4 class="{{#if attitude}}{{attitude}}{{else}}hostile{{/if}}">{{name}} <a href="http://www.d20pfsrd.com/?s={{name}}" target="_blank" class="search"><i class="fa fa-search" aria-hidden="true"></i></a></h4>
       <section class=" general">
         <div>
           <strong class="cr">CR {{cr}}</strong>
@@ -72,16 +72,29 @@
             {{/will}}
           {{/saves}}
         </div>
+        {{#if defensiveabilities}}
         <div class="defensive-abilities">
-          {{#if defensiveabilities}}
             <strong>Defensive Abilities</strong>
             <ul class="defensive-abilities-list">
               {{#each defensiveabilities}}
                 <li class="defensive-ability">{{this}}</li>
               {{/each}}
             </ul>
-          {{/if}}
         </div>
+        {{/if}}
+
+        {{#if immunities}}
+        <div class="immunities">
+          <strong>Immunities</strong>
+          <ul class="immunities-list">
+              {{#each immunities}}
+                <li class="immunity">{{this}}</li>
+              {{/each}}
+            </ul>
+        </div>
+        {{/if}}
+
+
       </section>
       <section class=" offense">
         <h5>Offense</h5>

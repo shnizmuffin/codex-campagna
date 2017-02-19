@@ -101,11 +101,11 @@
   text-transform: capitalize;
 }
 
-.senses, .attacks, .feats-list, .skills-list, .languages-list, .defensive-abilities-list, .ability-scores-list, .special-attacks-list {
+.senses, .attacks, .feats-list, .skills-list, .languages-list, .defensive-abilities-list, .ability-scores-list, .special-attacks-list, .immunities-list {
   display: inline;
   margin: 0;
+
   .sense {
-    display: inline;
     &:last-child {
       display: none;
     }
@@ -113,13 +113,12 @@
       content: ","
     }
   }
-  .defensive-ability, .special-attack, .feat, .skill, .language {
-    display: inline;
+  .defensive-ability, .special-attack, .feat, .skill, .language, .immunity {
     &:nth-child(n):nth-last-child(n+2):after {
       content: ","
     }
   }
-  .attack, .ability-score {
+  & > * {
     display: inline
   }
 
