@@ -1,98 +1,94 @@
 <div class="column">
   <div class="block">
-    <div class="stats">
+    <div class="stats accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
       <h4 class="{{#if attitude}}{{attitude}}{{else}}neutral{{/if}}">{{name}}</h4>
-      <section class="general">
-        <div>
-          <strong class="cr">CR {{CR}}</strong>
-          <strong>XP {{XP}}</strong>
-        </div>
-        <div class="class">
-          {{Gender}} {{Race}} {{Class}}
-        </div>
-        <div>
-          <span class="alignment">{{Alignment}}</span> <span class="size">{{Size}}</span> <span class="type">{{Type}}{{#if SubType}} {{SubType}}{{/if}}</span>
-        </div>
-        <div>
-          <strong>Init</strong> {{Init}};
-          <strong>Senses</strong>
-          <ul class="senses">
+
+      <section class="general accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>General</h5></a>
+        <div class="accordion-content" data-tab-content>
+          <div>
+            <strong class="cr">CR {{CR}}</strong>
+            <strong>XP {{XP}}</strong>
+          </div>
+          <div class="class">
+            {{Gender}} {{Race}} {{Class}}
+          </div>
+          <div>
+            <span class="alignment">{{Alignment}}</span> <span class="size">{{Size}}</span> <span class="type">{{Type}}{{#if SubType}} {{SubType}}{{/if}}</span>
+          </div>
+          <div>
+            <strong>Init</strong> {{Init}};
+            <strong>Senses</strong>
+            <ul class="senses">
               <li class="">{{Senses}}</li>
-          </ul>
+            </ul>
+          </div>
         </div>
       </section>
 
-      <section class="defense">
-        <h5>Defense</h5>
+      <section class="defense accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>Defense</h5></a>
+        <div class="accordion-content" data-tab-content>
 
-        <div class="ac">
-          <strong>AC</strong> {{AC}}
-        </div>
+          <div class="ac">
+            <strong>AC</strong> {{AC}}
+          </div>
 
-        {{#if SR}}
-        <div class="sr">
-          <strong>SR</strong> {{SR}}
-        </div>
-        {{/if}}
+          {{#if SR}}
+          <div class="sr">
+            <strong>SR</strong> {{SR}}
+          </div>
+          {{/if}}
 
-        <div class="hp">
-          <strong>hp</strong> {{HP}} {{HD}} {{#if HP_Mods}}({{HP_Mods}}){{/if}}
-          {{#if DR}}
-          <strong>DR</strong> {{DR}}
+          <div class="hp">
+            <strong>hp</strong> {{HP}} {{HD}} {{#if HP_Mods}}({{HP_Mods}}){{/if}} {{#if DR}}
+            <strong>DR</strong> {{DR}} {{/if}}
+          </div>
+
+          <div class="saves">
+            <strong>Fort</strong> {{Fort}}
+            <strong>Ref</strong> {{Ref}}
+            <strong>Will</strong> {{Will}} ({{Save_Mods}})
+          </div>
+
+          {{#if DefensiveAbilities}}
+          <div class="defensive-abilities">
+            <strong>Defensive Abilities</strong>
+            <ul class="defensive-abilities-list">
+              <li class="defensive-ability">{{DefensiveAbilities}}</li>
+            </ul>
+          </div>
+          {{/if}} {{#if Immune}}
+          <div class="immunities">
+            <strong>Immunities</strong>
+            <ul class="immunities-list">
+              <li class="immunity">{{Immune}}</li>
+            </ul>
+          </div>
+          {{/if}} {{#if Resist}}
+          <div class="resistances">
+            <strong>Resistances</strong>
+            <ul class="resistances-list">
+              <li class="resistance">{{Resist}}</li>
+            </ul>
+          </div>
+          {{/if}} {{#if Weaknesses}}
+          <div class="weaknesses">
+            <strong>Weaknesses</strong>
+            <ul class="weaknesses-list">
+              <li class="weakness">{{Weaknesses}}</li>
+            </ul>
+          </div>
           {{/if}}
         </div>
-
-        <div class="saves">
-          <strong>Fort</strong> {{Fort}}
-          <strong>Ref</strong> {{Ref}}
-          <strong>Will</strong> {{Will}}
-          ({{Save_Mods}})
-        </div>
-
-        {{#if DefensiveAbilities}}
-        <div class="defensive-abilities">
-          <strong>Defensive Abilities</strong>
-          <ul class="defensive-abilities-list">
-            <li class="defensive-ability">{{DefensiveAbilities}}</li>
-          </ul>
-        </div>
-        {{/if}}
-
-        {{#if Immune}}
-        <div class="immunities">
-          <strong>Immunities</strong>
-          <ul class="immunities-list">
-            <li class="immunity">{{Immune}}</li>
-          </ul>
-        </div>
-        {{/if}}
-
-        {{#if Resist}}
-        <div class="resistances">
-          <strong>Resistances</strong>
-          <ul class="resistances-list">
-            <li class="resistance">{{Resist}}</li>
-          </ul>
-        </div>
-        {{/if}}
-
-        {{#if Weaknesses}}
-        <div class="weaknesses">
-          <strong>Weaknesses</strong>
-          <ul class="weaknesses-list">
-            <li class="weakness">{{Weaknesses}}</li>
-          </ul>
-        </div>
-        {{/if}}
-
       </section>
-      <section class=" offense">
-        <h5>Offense</h5>
-        <div class="speed"><strong>Speed</strong>
-          {{Speed}} {{#if Speed_Mod}}({{Speed_Mod}}){{/if}}
-        </div>
+      <section class=" offense accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>Offense</h5></a>
+        <div class="accordion-content" data-tab-content>
+          <div class="speed"><strong>Speed</strong> {{Speed}} {{#if Speed_Mod}}({{Speed_Mod}}){{/if}}
+          </div>
 
-        {{#if Melee}}
+          {{#if Melee}}
           <div class="melee"><strong>Melee</strong>
             <ul class="attacks">
               <li class="attack">
@@ -100,170 +96,149 @@
               </li>
             </ul>
           </div>
-        {{/if}}
-
-        {{#if Ranged}}
+          {{/if}} {{#if Ranged}}
           <div class="ranged"><strong>Ranged</strong>
             <ul class="attacks">
-                <li class="attack">
-                  {{Ranged}}
-                </li>
+              <li class="attack">
+                {{Ranged}}
+              </li>
             </ul>
           </div>
-        {{/if}}
+          {{/if}}
 
-        <div class="space-and-reach">
-          <strong>Space</strong> {{Space}};
-          <strong>Reach</strong> {{Reach}}
-        </div>
+          <div class="space-and-reach">
+            <strong>Space</strong> {{Space}};
+            <strong>Reach</strong> {{Reach}}
+          </div>
 
-        {{#if SpecialAttacks}}
+          {{#if SpecialAttacks}}
           <div class="special-attacks"><strong>Special Attacks</strong>
             <ul class="special-attacks-list">
-                <li class="special-attack">{{SpecialAttacks}}</li>
+              <li class="special-attack">{{SpecialAttacks}}</li>
             </ul>
           </div>
-        {{/if}}
-
-        {{#if SpellLikeAbilities}}
+          {{/if}} {{#if SpellLikeAbilities}}
           <div class="spell-like-abilities"><strong>Spell-Like Abilities</strong>
             <blockquote>
               <ul class="spell-like-abilities-list">
-                  <li class="spell-like-ability">{{SpellLikeAbilities}}</li>
+                <li class="spell-like-ability">{{SpellLikeAbilities}}</li>
               </ul>
             </blockquote>
           </div>
-        {{/if}}
-
-        {{#if SpellsKnown}}
+          {{/if}} {{#if SpellsKnown}}
           <div class="spells-known"><strong>Spells Known</strong>
             <blockquote>
               <ul class="spells-known-list">
-                  <li class="spell-known">{{SpellsKnown}}</li>
+                <li class="spell-known">{{SpellsKnown}}</li>
               </ul>
             </blockquote>
           </div>
-        {{/if}}
-
-        {{#if SpellsPrepared}}
+          {{/if}} {{#if SpellsPrepared}}
           <div class="spells-prepared"><strong>Spells Prepared</strong>
             <blockquote>
               <ul class="spells-prepared-list">
-                  <li class="spell-prepared">{{SpellsPrepared}}</li>
+                <li class="spell-prepared">{{SpellsPrepared}}</li>
               </ul>
             </blockquote>
           </div>
-        {{/if}}
-
-        {{#if SpellDomains}}
+          {{/if}} {{#if SpellDomains}}
           <div class="spells-prepared"><strong>Spell Domains</strong>
             <ul class="spells-prepared-list">
               <li class="spell-prepared">{{SpellDomains}}</li>
             </ul>
           </div>
-        {{/if}}
-
+          {{/if}}
+        </div>
       </section>
-      <section class=" statistics">
-        <h5>Statistics</h5>
-        <div class="ability-scores">
-          <ul class="ability-scores-list">
-            <li class="ability-score">{{AbilityScores}}</li>
-            {{#if AbilityScore_Mods}}<li class="ability-score">{{AbilityScore_Mods}}</li>{{/if}}
-          </ul>
-        </div>
 
-        <div class="base-stats"><strong>Base Atk</strong> +{{BaseAtk}};
-          <strong>CMB</strong> {{CMB}};
-          <strong>CMD</strong> {{CMD}};
-        </div>
+      <section class=" statistics accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>Statistics</h5></a>
+        <div class="accordion-content" data-tab-content>
+          <div class="ability-scores">
+            <ul class="ability-scores-list">
+              <li class="ability-score">{{AbilityScores}}</li>
+              {{#if AbilityScore_Mods}}
+              <li class="ability-score">{{AbilityScore_Mods}}</li>{{/if}}
+            </ul>
+          </div>
 
-        {{#if Feats}}
+          <div class="base-stats"><strong>Base Atk</strong> +{{BaseAtk}};
+            <strong>CMB</strong> {{CMB}};
+            <strong>CMD</strong> {{CMD}};
+          </div>
+
+          {{#if Feats}}
           <div class="feats">
             <strong>Feats</strong>
             <ul class="feats-list">
               <li class="feat">{{Feats}}</li>
             </ul>
           </div>
-        {{/if}}
-
-        {{#if Skills}}
+          {{/if}} {{#if Skills}}
           <div class="skills">
             <strong>Skills</strong>
             <ul class="skills-list">
-                <li class="skill">{{Skills}}</li>
+              <li class="skill">{{Skills}}</li>
             </ul>
           </div>
-        {{/if}}
-
-        {{#if RacialMods}}
+          {{/if}} {{#if RacialMods}}
           <div class="skills">
             <strong>Racial Modifiers</strong>
             <ul class="skills-list">
-                <li class="skill">{{RacialMods}}</li>
+              <li class="skill">{{RacialMods}}</li>
             </ul>
           </div>
-        {{/if}}
-
-        {{#if Languages}}
-        <div class="languages">
-          <strong>Languages</strong>
-          <ul class="languages-list">
-            <li class="language">{{Languages}}</li>
-          </ul>
+          {{/if}} {{#if Languages}}
+          <div class="languages">
+            <strong>Languages</strong>
+            <ul class="languages-list">
+              <li class="language">{{Languages}}</li>
+            </ul>
+          </div>
+          {{/if}} {{#if SQ}}
+          <div class="sq">
+            <strong>SQ</strong> {{SQ}}
+          </div>
+          {{/if}}
         </div>
-        {{/if}}
-
-        {{#if SQ}}
-        <div class="sq">
-          <strong>SQ</strong>
-          {{SQ}}
-        </div>
-        {{/if}}
-
       </section>
 
       {{#if SpecialAbilities}}
-      <section class=" special-abilities">
-        <h5>Special Abilities</h5>
-        <div class="special-ability">
-          {{SpecialAbilities}}
+      <section class=" special-abilities accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>Special Abilities</h5></a>
+        <div class="accordion-content" data-tab-content>
+          <div class="special-ability">
+            {{SpecialAbilities}}
+          </div>
         </div>
       </section>
       {{/if}}
 
-      <section class="strategy">
-        <h5>Strategy</h5>
+      <section class="strategy accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>Strategy</h5></a>
+        <div class="accordion-content" data-tab-content>
         {{#if BeforeCombat}}
         <p><strong>Before Combat</strong> {{BeforeCombat}}</p>
-        {{/if}}
-
-        {{#if DuringCombat}}
+        {{/if}} {{#if DuringCombat}}
         <p><strong>During Combat</strong> {{DuringCombat}}</p>
-        {{/if}}
-
-        {{#if Morale}}
+        {{/if}} {{#if Morale}}
         <p><strong>Morale</strong> {{Morale}}</p>
-        {{/if}}
-
-        {{#if Gear}}
+        {{/if}} {{#if Gear}}
         <p><strong>Gear</strong> {{Gear}}</p>
-        {{/if}}
-
-        {{#if OtherGear}}
+        {{/if}} {{#if OtherGear}}
         <p><strong>Other Gear</strong> {{OtherGear}}</p>
-        {{/if}}
-
-        {{#if Treasure}}
+        {{/if}} {{#if Treasure}}
         <p><strong>Treasure</strong> {{Treasure}}</p>
         {{/if}}
-
+        </div>
       </section>
 
       {{#if Description}}
-      <section class=" description">
-        <h5>Description</h5>
-        <p>{{Description}}</p>
+      <section class=" description accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>Description</h5></a>
+        <div class="accordion-content" data-tab-content>
+          <p>{{Description}}</p>
+        </div>
       </section>
       {{/if}}
 

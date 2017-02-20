@@ -12,4 +12,8 @@ $(document).ready(function() {
   });
 
   $('.table-of-contents a').attr('data-close', '');
+
+  $('.accordion h4').click(function() {
+    $(this).siblings().slideToggle();
+  });
 });

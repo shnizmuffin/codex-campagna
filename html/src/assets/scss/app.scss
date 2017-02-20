@@ -1,9 +1,9 @@
 @charset 'utf-8';
 
+@import 'components/colors';
 @import 'settings';
 @import 'foundation';
 @import 'motion-ui';
-@import 'components/colors';
 
 @include foundation-global-styles;
 // @include foundation-grid;

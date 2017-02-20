@@ -1,163 +1,127 @@
 <div class="column">
   <div class="block">
-    <div class="stats">
+    <div class="stats accordion" data-accordion data-multi-expand="true" data-allow-all-closed="true">
+
       <h4 class="{{#if attitude}}{{attitude}}{{else}}hostile{{/if}}">{{name}} <a href="http://www.d20pfsrd.com/?s={{name}}" target="_blank" class="search"><i class="fa fa-search" aria-hidden="true"></i></a></h4>
-      <section class=" general">
-        <div>
-          <strong class="cr">CR {{cr}}</strong>
-          <br>
-          <strong>XP {{xp}}</strong>
-        </div>
-        <div><span class="alignment">{{alignment}}</span> <span class="size">{{size}}</span> <span class="type">{{type}}{{#if subtype}} ({{subtype}}){{/if}}</span>
-        </div>
-        <div><strong>Init</strong> {{initiative}};
-          <br>
-          <strong>Senses</strong>
-          <ul class="senses">
-            {{#each senses}}
+
+      <section class="general accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>General</h5></a>
+        <div class="accordion-content" data-tab-content>
+          <div>
+            <strong class="cr">CR {{cr}}</strong>
+            <br>
+            <strong>XP {{xp}}</strong>
+          </div>
+          <div><span class="alignment">{{alignment}}</span> <span class="size">{{size}}</span> <span class="type">{{type}}{{#if subtype}} ({{subtype}}){{/if}}</span>
+          </div>
+          <div><strong>Init</strong> {{initiative}};
+            <br>
+            <strong>Senses</strong>
+            <ul class="senses">
+              {{#each senses}}
               <li class="sense">{{this}}</li>
-            {{/each}}
-          </ul>
-          <br>
-          <strong>Perception</strong>
-          {{#skills.perception}}
-            {{bonus}}
-
-            {{#each circumstantial}}
-              {{bonus}} ({{circumstance}})
-              {{#if type}}
-                [{{type}}]
-              {{/if}}
-            {{/each}}
-
-          {{/skills.perception}}
+              {{/each}}
+            </ul>
+            <br>
+            <strong>Perception</strong> {{#skills.perception}} {{bonus}} {{#each circumstantial}} {{bonus}} ({{circumstance}}) {{#if type}} [{{type}}] {{/if}} {{/each}} {{/skills.perception}}
+          </div>
         </div>
       </section>
-      <section class=" defense">
-        <h5>Defense</h5>
-        <div class="ac"><strong>AC</strong>
-          {{#ac}}
-            {{normal}}, {{touch}} touch, {{flat-footed}} flat-footed
-          {{/ac}}
-        </div>
-        <div class="hp"><strong>hp</strong> {{hp}} ({{hd}})</div>
-        <div class="saves">
-          {{#saves}}
-            {{#fortitude}}
-              <strong>Fort</strong> {{bonus}}
-              {{#each circumstantial}}
-                {{bonus}} ({{circumstance}})
-                {{#if type}}
-                  [{{type}}]
-                {{/if}}
-              {{/each}}
-            {{/fortitude}}
-            {{#reflex}}
-              <strong>Ref</strong> {{bonus}}
-              {{#each circumstantial}}
-                {{bonus}} ({{circumstance}})
-                {{#if type}}
-                  [{{type}}]
-                {{/if}}
-              {{/each}}
-            {{/reflex}}
-            {{#will}}
-              <strong>Will</strong> {{bonus}}
-              {{#each circumstantial}}
-                {{bonus}} ({{circumstance}})
-                {{#if type}}
-                  [{{type}}]
-                {{/if}}
-              {{/each}}
-            {{/will}}
-          {{/saves}}
-        </div>
-        {{#if defensiveabilities}}
-        <div class="defensive-abilities">
+
+      <section class="defense accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>Defense</h5></a>
+        <div class="accordion-content" data-tab-content>
+          <div class="ac"><strong>AC</strong> {{#ac}} {{normal}}, {{touch}} touch, {{flat-footed}} flat-footed {{/ac}}
+          </div>
+          <div class="hp"><strong>hp</strong> {{hp}} ({{hd}})</div>
+          <div class="saves">
+            {{#saves}} {{#fortitude}}
+            <strong>Fort</strong> {{bonus}} {{#each circumstantial}} {{bonus}} ({{circumstance}}) {{#if type}} [{{type}}] {{/if}} {{/each}} {{/fortitude}} {{#reflex}}
+            <strong>Ref</strong> {{bonus}} {{#each circumstantial}} {{bonus}} ({{circumstance}}) {{#if type}} [{{type}}] {{/if}} {{/each}} {{/reflex}} {{#will}}
+            <strong>Will</strong> {{bonus}} {{#each circumstantial}} {{bonus}} ({{circumstance}}) {{#if type}} [{{type}}] {{/if}} {{/each}} {{/will}} {{/saves}}
+          </div>
+          {{#if defensiveabilities}}
+          <div class="defensive-abilities">
             <strong>Defensive Abilities</strong>
             <ul class="defensive-abilities-list">
               {{#each defensiveabilities}}
-                <li class="defensive-ability">{{this}}</li>
+              <li class="defensive-ability">{{this}}</li>
               {{/each}}
             </ul>
-        </div>
-        {{/if}}
-
-        {{#if immunities}}
-        <div class="immunities">
-          <strong>Immunities</strong>
-          <ul class="immunities-list">
+          </div>
+          {{/if}} {{#if immunities}}
+          <div class="immunities">
+            <strong>Immunities</strong>
+            <ul class="immunities-list">
               {{#each immunities}}
-                <li class="immunity">{{this}}</li>
+              <li class="immunity">{{this}}</li>
               {{/each}}
             </ul>
+          </div>
+          {{/if}}
         </div>
-        {{/if}}
-
-
       </section>
-      <section class=" offense">
-        <h5>Offense</h5>
-        <div class="speed"><strong>Speed</strong>
-          {{#each speed}}{{this}} {{/each}}
-        </div>
 
-        {{#if melee}}
+      <section class="offense accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>Offense</h5></a>
+        <div class="accordion-content" data-tab-content>
+          <div class="speed"><strong>Speed</strong> {{#each speed}}{{this}} {{/each}}
+          </div>
+
+          {{#if melee}}
           <div class="melee"><strong>Melee</strong>
             <ul class="attacks">
               {{#each melee}}
-                <li class="attack">
-                  {{amount}} {{weapon}} +{{bonus}} ({{damage}}; {{critmin}}/x{{critmult}}{{#if special}} plus {{special}}{{/if}})
-                </li>
+              <li class="attack">
+                {{amount}} {{weapon}} +{{bonus}} ({{damage}}; {{critmin}}/x{{critmult}}{{#if special}} plus {{special}}{{/if}})
+              </li>
               {{/each}}
             </ul>
           </div>
-        {{/if}}
-
-        {{#if ranged}}
+          {{/if}} {{#if ranged}}
           <div class="ranged"><strong>Ranged</strong>
             <ul class="attacks">
               {{#each ranged}}
-                <li class="attack">
-                  {{amount}} {{weapon}} +{{bonus}} ({{damage}}; {{critmin}}/x{{critmult}}{{#if special}} plus {{special}}{{/if}})
-                </li>
+              <li class="attack">
+                {{amount}} {{weapon}} +{{bonus}} ({{damage}}; {{critmin}}/x{{critmult}}{{#if special}} plus {{special}}{{/if}})
+              </li>
               {{/each}}
             </ul>
           </div>
-        {{/if}}
+          {{/if}}
 
-        <div class="space-and-reach">
-          <strong>Space</strong> {{space}};
-          <strong>Reach</strong> {{reach}}
-        </div>
+          <div class="space-and-reach">
+            <strong>Space</strong> {{space}};
+            <strong>Reach</strong> {{reach}}
+          </div>
 
-        {{#if specialattacks}}
+          {{#if specialattacks}}
           <div class="special-attacks"><strong>Special Attacks</strong>
             <ul class="special-attacks-list">
               {{#each specialattacks}}
-                <li class="special-attack">{{this}}</li>
+              <li class="special-attack">{{this}}</li>
               {{/each}}
             </ul>
           </div>
-        {{/if}}
-
-        {{#if sla}}
+          {{/if}} {{#if sla}}
           <div class="spell-like-abilities"><strong>Spell-Like Abilities</strong> (CL {{sla.casterlevel}})[Concentration {{sla.concentration}}]
             <blockquote>
               <ul class="spell-like-abilities-list">
                 {{#each sla.abilities}}
-                  <li class="spell-like-ability"><strong>{{frequency}}</strong> - {{name}}<span class="{{dc}}"> (DC {{dc}})</span></li>
+                <li class="spell-like-ability"><strong>{{frequency}}</strong> - {{name}}<span class="{{dc}}"> (DC {{dc}})</span></li>
                 {{/each}}
               </ul>
             </blockquote>
           </div>
-        {{/if}}
-
+          {{/if}}
+        </div>
       </section>
-      <section class=" statistics">
-        <h5>Statistics</h5>
-        <div class="ability-scores">
-          {{#abilityscores}}
+
+      <section class="statistics accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>Statistics</h5></a>
+        <div class="accordion-content" data-tab-content>
+          <div class="ability-scores">
+            {{#abilityscores}}
             <ul class="ability-scores-list">
               <li class="ability-score ability-score-{{str}}"><strong>Str</strong> <span class="{{str}}"> {{str}}</span></li>
               <li class="ability-score ability-score-{{dex}}"><strong>Dex</strong> <span class="{{dex}}"> {{dex}}</span></li>
@@ -166,83 +130,75 @@
               <li class="ability-score ability-score-{{wis}}"><strong>Wis</strong> <span class="{{wis}}"> {{wis}}</span></li>
               <li class="ability-score ability-score-{{cha}}"><strong>Cha</strong> <span class="{{cha}}"> {{cha}}</span></li>
             </ul>
-          {{/abilityscores}}
-        </div>
+            {{/abilityscores}}
+          </div>
 
-        <div class="base-stats"><strong>Base Atk</strong> +{{bab}};
-          <strong>CMB</strong> +{{cmb.bonus}}{{#if cmb.special}} (+{{cmb.special}}){{/if}};
-          <strong>CMD</strong> {{cmd.bonus}}{{#if cmd.special}} ({{cmd.special}}){{/if}};
-        </div>
+          <div class="base-stats"><strong>Base Atk</strong> +{{bab}};
+            <strong>CMB</strong> +{{cmb.bonus}}{{#if cmb.special}} (+{{cmb.special}}){{/if}};
+            <strong>CMD</strong> {{cmd.bonus}}{{#if cmd.special}} ({{cmd.special}}){{/if}};
+          </div>
 
-        {{#if feats}}
+          {{#if feats}}
           <div class="feats">
             <strong>Feats</strong>
             <ul class="feats-list">
               {{#each feats}}
-                <li class="feat"> <a href="http://www.d20pfsrd.com/?s={{this}}" target="_blank">{{this}}</a></li>
+              <li class="feat"> <a href="http://www.d20pfsrd.com/?s={{this}}" target="_blank">{{this}}</a></li>
               {{/each}}
             </ul>
           </div>
-        {{/if}}
-
-        {{#if skills}}
+          {{/if}} {{#if skills}}
           <div class="skills">
             <strong>Skills</strong>
             <ul class="skills-list">
               {{#each skills}}
-                <li class="skill">{{@key}} +{{this.bonus}}{{#each circumstantial}} {{bonus}} ({{circumstance}}){{#if type}} [{{type}}]{{/if}}{{/each}}</li>
+              <li class="skill">{{@key}} +{{this.bonus}}{{#each circumstantial}} {{bonus}} ({{circumstance}}){{#if type}} [{{type}}]{{/if}}{{/each}}</li>
               {{/each}}
             </ul>
           </div>
-        {{/if}}
-
-        {{#if languages}}
-        <div class="languages">
-          <strong>Languages</strong>
-          <ul class="languages-list">
-            {{#each languages}}
-            <li class="language">{{this}}</li>
-            {{/each}}
-          </ul>
+          {{/if}} {{#if languages}}
+          <div class="languages">
+            <strong>Languages</strong>
+            <ul class="languages-list">
+              {{#each languages}}
+              <li class="language">{{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+          {{/if}} {{#if sq}}
+          <div class="sq">
+            <strong>SQ</strong> {{sq}}
+          </div>
+          {{/if}}
         </div>
-        {{/if}}
-
-        {{#if sq}}
-        <div class="sq">
-          <strong>SQ</strong>
-          {{sq}}
-        </div>
-        {{/if}}
-
       </section>
 
       {{#if specialabilities}}
-      <section class=" special-abilities">
-        <h5>Special Abilities</h5>
-        {{#each specialabilities}}
-        <div class="special-ability"><strong class="name">{{name}}</strong> {{{description}}}</div>
-        {{/each}}
+      <section class="special-abilities accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>Special Abilities</h5></a>
+        <div class="accordion-content" data-tab-content>
+          {{#each specialabilities}}
+          <div class="special-ability"><strong class="name">{{name}}</strong> {{{description}}}</div>
+          {{/each}}
+        </div>
       </section>
       {{/if}}
 
-      {{!-- <section class=" strategy">
-        <h5 id="strategy_3"><a name="user-content-strategy_3" href="#strategy_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Strategy</h5>
-        <p><strong>Before Combat</strong> Minotaur elders use their spell-like abilities extensively before combat to prepare the area for a coming battle, littering the battlefield with glyphs of warding and using stone shape to create pits and traps.</p>
-        <p><strong>During Combat</strong> Like ordinary minotaurs, minotaur elders begin combat with a terrifying charge attack, using its Power Attack and Impaling Charge feats to attempt to kill or grapple a foe. A minotaur elder uses its wall of stone and fog cloud spell-like abilities to divide or confuse his foes and uses Vital Strike when forced to move before attacking. It attacks any foes it is unable to reach with its double crossbow. Its maze ability is reserved for the most deadly opponent or the last foe, so the elder might toy with the trapped foe.</p>
-        <p><strong>Morale Minotaur</strong> elders attempt to flee if reduced to 5 hp or less.</p>
-      </section> --}}
-
-      <section class="ecology">
-        <h5>Ecology</h5>
-        <p><strong>Environment</strong> {{environment}}</p>
-        <p><strong>Organization</strong> {{organization}}</p>
-        <p><strong>Treasure</strong> {{treasure}}</p>
+      <section class="ecology accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>Ecology</h5></a>
+        <div class="accordion-content" data-tab-content>
+          <p><strong>Environment</strong> {{environment}}</p>
+          <p><strong>Organization</strong> {{organization}}</p>
+          <p><strong>Treasure</strong> {{treasure}}</p>
+        </div>
       </section>
 
       {{#if description}}
-      <section class=" description">
-        <h5>Description</h5>
-        <p>{{description}}</p>
+      <section class=" description accordion-item is-active" data-accordion-item>
+        <a href="#" class="accordion-title"><h5>Description</h5></a>
+        <div class="accordion-content" data-tab-content>
+          <p>{{description}}</p>
+        </div>
       </section>
       {{/if}}
 

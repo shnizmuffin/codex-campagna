@@ -10,17 +10,7 @@
   //     border-left: 2px solid #ccc;
   //   }
   // }
-  section {
-    &>* {
-      padding: 0 1.5em;
-      &:first-child {
-        padding-top: 0.5em;
-      }
-      &:last-child {
-        padding-bottom: 0.5em;
-      }
-    }
-  }
+  
 }
 
 // NOT A NUMBER
@@ -59,14 +49,20 @@
     border-radius: 2px;
     display: block;
     text-transform: capitalize;
+    cursor: pointer;
   }
-  h5 {
+  .accordion-title {
     background: $color-gray-10;
     border-bottom: 2px $color-gray-20 solid;
     border-radius: 2px;
-    padding: 0 1em;
+    padding: 1rem 1.5rem;
     display: block;
     cursor: pointer;
+
+    h5 {
+      line-height: 1;
+      margin-bottom: 0;
+    }
   }
   br {
     display: none;
