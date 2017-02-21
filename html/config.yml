@@ -1,5 +1,6 @@
 # Your project's server will run on localhost:xxxx at this port
-PORT: 8000
+PORT: 4747
+UI_PORT: 4748
 
 # Autoprefixer will make sure your CSS works with these browsers
 COMPATIBILITY:
