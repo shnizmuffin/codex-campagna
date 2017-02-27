@@ -9,21 +9,18 @@
         <div class="accordion-content" data-tab-content>
           <div>
             <strong class="cr">CR {{cr}}</strong>
-            <br>
             <strong>XP {{xp}}</strong>
           </div>
           <div><span class="alignment">{{alignment}}</span> <span class="size">{{size}}</span> <span class="type">{{type}}{{#if subtype}} ({{subtype}}){{/if}}</span>
           </div>
           <div><strong>Init</strong> {{initiative}};
-            <br>
             <strong>Senses</strong>
             <ul class="senses">
               {{#each senses}}
               <li class="sense">{{this}}</li>
               {{/each}}
             </ul>
-            <br>
-            <strong>Perception</strong> {{#skills.perception}} {{bonus}} {{#each circumstantial}} {{bonus}} ({{circumstance}}) {{#if type}} [{{type}}] {{/if}} {{/each}} {{/skills.perception}}
+            {{!-- <strong>Perception</strong> {{#skills.perception}} {{bonus}} {{#each circumstantial}} {{bonus}} ({{circumstance}}) {{#if type}} [{{type}}] {{/if}} {{/each}} {{/skills.perception}} --}}
           </div>
         </div>
       </section>
@@ -49,12 +46,43 @@
               {{/each}}
             </ul>
           </div>
-          {{/if}} {{#if immunities}}
+          {{/if}}
+          {{#if dr}}
+          <div class="dr">
+            <strong>DR</strong>
+            <ul class="dr-list">
+              {{#each dr}}
+              <li class="dr">{{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+          {{/if}}
+          {{#if immunities}}
           <div class="immunities">
             <strong>Immunities</strong>
             <ul class="immunities-list">
               {{#each immunities}}
               <li class="immunity">{{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+          {{/if}}
+          {{#if resistances}}
+          <div class="resistances">
+            <strong>Resistances</strong>
+            <ul class="resistances-list">
+              {{#each resistances}}
+              <li class="resistance">{{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+          {{/if}}
+          {{#if weaknesses}}
+          <div class="weaknesses">
+            <strong>Weaknesses</strong>
+            <ul class="weaknesses-list">
+              {{#each weaknesses}}
+              <li class="weakness">{{this}}</li>
               {{/each}}
             </ul>
           </div>
@@ -134,7 +162,7 @@
           </div>
 
           <div class="base-stats"><strong>Base Atk</strong> +{{bab}};
-            <strong>CMB</strong> +{{cmb.bonus}}{{#if cmb.special}} (+{{cmb.special}}){{/if}};
+            <strong>CMB</strong> +{{cmb.bonus}}{{#if cmb.special}} ({{cmb.special}}){{/if}};
             <strong>CMD</strong> {{cmd.bonus}}{{#if cmd.special}} ({{cmd.special}}){{/if}};
           </div>
 

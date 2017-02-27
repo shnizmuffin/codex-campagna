@@ -97,19 +97,31 @@
   text-transform: capitalize;
 }
 
-.senses, .attacks, .feats-list, .skills-list, .languages-list, .defensive-abilities-list, .ability-scores-list, .special-attacks-list, .immunities-list {
+.senses,
+.attacks,
+.feats-list,
+.skills-list,
+.languages-list,
+.defensive-abilities-list,
+.ability-scores-list,
+.special-attacks-list,
+.immunities-list,
+.weaknesses-list,
+.resistances-list,
+.dr-list {
   display: inline;
   margin: 0;
 
-  .sense {
-    &:last-child {
-      display: none;
-    }
-    &:nth-child(n):nth-last-child(n+3):after {
-      content: ","
-    }
-  }
-  .defensive-ability, .special-attack, .feat, .skill, .language, .immunity {
+  .sense, 
+  .defensive-ability,
+  .special-attack,
+  .feat,
+  .skill,
+  .language,
+  .immunity,
+  .weakness,
+  .resistance,
+  .dr {
     &:nth-child(n):nth-last-child(n+2):after {
       content: ","
     }
