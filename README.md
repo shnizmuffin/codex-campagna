@@ -10,3 +10,9 @@ Goal: To create an application Game Masters use to build worlds, create campaign
 - Run locally
 - Integrate with Roll20
 - Integrate with online system reference documents
+
+ToDo:
+
+- City stat block partial
+- Magic Item stat block partial
+- Trap stat block partial
